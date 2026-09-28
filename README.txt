@@ -1,25 +1,39 @@
-VS CODE STEPS
+# Student Performance Report Automation
 
-1. Open this folder in VS Code.
-2. Terminal > New Terminal.
-3. Create virtual environment:
-   py -m venv .venv
-4. Activate it:
-   .venv\Scripts\activate
-5. Install packages:
-   pip install -r requirements.txt
-6. Run:
-   python generate_student_reports.py
-7. Open Student_PDFs. One PDF is created for every Excel row.
+## Overview
 
-For your real Excel, keep these column names exactly:
-Student Name
-Parent / Guardian
-Grade
-Section
-Parent Phone
-Robotics Marks
-Attendance %
-Activities
+This project automates the generation of Robotics student performance reports using Python.
 
-The exact Social Baluni logo, IKKASHIN logo and uploaded robot image are already in assets.
+The system reads student data from Excel files and generates:
+
+- Individual student performance reports
+- One consolidated monthly performance report
+
+## How It Works
+
+1. Excel files are placed in the `Input_Data` folder.
+2. The automation identifies the next unprocessed monthly data file.
+3. Python reads and validates the student data.
+4. Individual PDF reports are generated for each student.
+5. A consolidated monthly PDF report is generated.
+6. Processed files are recorded so the same month is not processed again.
+
+## Project Structure
+
+```text
+student-performance-report-automation/
+│
+├── generate_student_reports.py
+├── watcher.py
+├── processed_files.json
+├── requirements.txt
+├── README.md
+│
+├── assets/
+│   ├── school_logo.jpg
+│   ├── ikkashin_logo.jpg
+│   └── robot_image.jpg
+│
+├── Input_Data/
+├── Individual_Reports/
+└── Consolidated_Reports/
