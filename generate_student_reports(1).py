@@ -89,7 +89,10 @@ def make_individual_report(row):
     ]))
     story += [top, Spacer(1,2.5*mm)]
 
-    school = RLImage(str(SCHOOL_LOGO), width=22*mm, height=22*mm)
+    # School logo: preserve the original aspect ratio and make it larger/clearer.
+    school = RLImage(str(SCHOOL_LOGO))
+    school._restrictSize(32*mm, 30*mm)
+    school.hAlign = "CENTER"
     ikk = RLImage(str(IKKASHIN_LOGO), width=30*mm, height=18*mm)
     robot = RLImage(str(ROBOT_CROP if ROBOT_CROP.exists() else ROBOT_IMAGE), width=27*mm, height=30*mm)
     session = ParagraphStyle("Session", parent=styles["ST"], fontSize=7.5,
@@ -100,10 +103,10 @@ def make_individual_report(row):
          Paragraph("ROBOTICS • STUDENT PERFORMANCE REPORT", styles["ST"]),
          Paragraph("Academic Session 2025–2026", session)],
         [ikk, robot]
-    ]], colWidths=[27*mm,118*mm,35*mm])
+    ]], colWidths=[35*mm,110*mm,35*mm])
     head.setStyle(TableStyle([
         ("VALIGN",(0,0),(-1,-1),"MIDDLE"),
-        ("ALIGN",(0,0),(0,0),"LEFT"),
+        ("ALIGN",(0,0),(0,0),"CENTER"),
         ("ALIGN",(2,0),(2,0),"RIGHT"),
         ("LEFTPADDING",(0,0),(-1,-1),0),("RIGHTPADDING",(0,0),(-1,-1),0),
         ("TOPPADDING",(0,0),(-1,-1),0),("BOTTOMPADDING",(0,0),(-1,-1),0)
